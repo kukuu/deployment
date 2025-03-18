@@ -107,7 +107,7 @@ spec:
       - name: prometheus-config
         configMap:
           name: prometheus-config
-``
+```
 iv. Apply the Deployment:
 
 ```
