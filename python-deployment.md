@@ -37,4 +37,61 @@ docker run -p 5000:5000 my-app:latest
 
 ```
 
-**- Step 2: Push Code to Version Control**
+**- Step 2: Push Code to Version Control** 
+
+i. Commit and Push Code:
+
+ii. Push the feature branch to GitHub or GitLab.
+
+Example:
+
+```
+
+git checkout -b feature-branch
+git add .
+git commit -m "Add new feature"
+git push origin feature-branch
+
+```
+**- Step 3: CI/CD Pipeline with Jenkins**
+
+1. Set Up Jenkins Pipeline:
+
+i. Create a Jenkinsfile to define the CI/CD pipeline.
+
+Example Jenkinsfile: 
+
+```
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                sh 'docker build -t my-app:${GIT_COMMIT} .'
+            }
+        }
+        stage('Unit Tests') {
+            steps {
+                sh 'pytest tests/'
+            }
+        }
+        stage('Push to Registry') {
+            steps {
+                sh 'docker tag my-app:${GIT_COMMIT} my-registry/my-app:${GIT_COMMIT}'
+                sh 'docker push my-registry/my-app:${GIT_COMMIT}'
+            }
+        }
+        stage('Deploy to Staging') {
+            steps {
+                sh 'kubectl apply -f k8s/staging-deployment.yaml'
+            }
+        }
+    }
+}
+```
+
+2. Run Integration and QA/UAT Tests:
+
+Deploy the feature to a staging environment using Kubernetes.
+
+Run integration and end-to-end tests using tools like Selenium or Cypress.
