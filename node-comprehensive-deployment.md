@@ -252,6 +252,8 @@ helm install grafana grafana/grafana
 
 ii. Configure Prometheus to scrape metrics from the backend.
 
+_See - https://github.com/kukuu/deployment/blob/main/prometheus-configuration.md_
+
 2. ELK Stack for Logging:
 
 i. Deploy Elasticsearch, Logstash, and Kibana:
