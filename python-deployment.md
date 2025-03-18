@@ -1,6 +1,6 @@
 # Python Deployment
 
-- Step 1: Local Development and Unit Testing
+**- Step 1: Local Development and Unit Testing**
 
 i. Write Code and Unit Tests:
 
@@ -37,4 +37,4 @@ docker run -p 5000:5000 my-app:latest
 
 ```
 
-- Step 2: Push Code to Version Control
+**- Step 2: Push Code to Version Control**
