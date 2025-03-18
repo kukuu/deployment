@@ -120,4 +120,64 @@ spec:
         ports:
         - containerPort: 5000
 ```
+2. Deploy to Production:
 
+i. Apply the updated Kubernetes manifest:
+
+```
+kubectl apply -f k8s/production-deployment.yaml
+```
+
+**- Step 5: Monitoring with Prometheus and Grafana**
+
+1. Set Up Prometheus:
+
+i. Deploy Prometheus in the Kubernetes cluster to scrape metrics.
+
+ii. Example k8s/prometheus-config.yaml:
+
+```
+global:
+  scrape_interval: 15s
+scrape_configs:
+- job_name: 'my-app'
+  static_configs:
+  - targets: ['my-app:5000']
+
+```
+
+2. Expose Metrics in the Application:
+
+i. Use a library like Prometheus Client to expose metrics.
+
+ii. Example (Python): 
+
+```
+from prometheus_client import start_http_server, Counter
+REQUEST_COUNT = Counter('request_count', 'Total HTTP Requests')
+@app.route('/')
+def index():
+    REQUEST_COUNT.inc()
+    return "Hello, World!"
+start_http_server(8000)
+
+```
+
+3. Visualize Metrics in Grafana:
+
+i. Deploy Grafana and connect it to Prometheus.
+
+ii. Create a dashboard to visualize metrics like request count, error rates, and response times. 
+
+**- Step 6: Rollback (if needed)**
+
+1. Rollback to Previous Version:
+
+i. If issues arise, rollback using Kubernetes: 
+
+```
+kubectl rollout undo deployment/my-app
+
+```
+
+This end-to-end process ensures a robust, automated deployment pipeline with monitoring and visualization for production readiness.
