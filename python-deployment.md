@@ -2,11 +2,11 @@
 
 **- Step 1: Local Development and Unit Testing**
 
-i. Write Code and Unit Tests:
+1.  Write Code and Unit Tests:
 
 i. Develop the feature and write unit tests using a framework like JUnit (Java), pytest (Python), or Mocha (Node.js).
 
-Example unit test (Python):
+ii. Example unit test (Python):
 
 ```
 def test_feature():
@@ -18,7 +18,7 @@ def test_feature():
 
 i. Create a Dockerfile to build the application image.
 
-Example Dockerfile:
+i. Example Dockerfile:
 
 ```
 FROM python:3.9-slim
@@ -39,11 +39,11 @@ docker run -p 5000:5000 my-app:latest
 
 **- Step 2: Push Code to Version Control** 
 
-i. Commit and Push Code:
+1. Commit and Push Code:
 
-ii. Push the feature branch to GitHub or GitLab.
+i. Push the feature branch to GitHub or GitLab.
 
-Example:
+ii. Example:
 
 ```
 
@@ -59,7 +59,7 @@ git push origin feature-branch
 
 i. Create a Jenkinsfile to define the CI/CD pipeline.
 
-Example Jenkinsfile: 
+ii. Example Jenkinsfile: 
 
 ```
 pipeline {
@@ -92,6 +92,32 @@ pipeline {
 
 2. Run Integration and QA/UAT Tests:
 
-Deploy the feature to a staging environment using Kubernetes.
+i. Deploy the feature to a staging environment using Kubernetes.
 
-Run integration and end-to-end tests using tools like Selenium or Cypress.
+ii. Run integration and end-to-end tests using tools like Selenium or Cypress.
+
+
+**- Step 4: Deploy to Production**
+
+1. Update Kubernetes Manifests:
+
+i. Modify the production deployment YAML to use the new image tag.
+
+ii. Example k8s/production-deployment.yaml:
+
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+spec:
+  replicas: 3
+  template:
+    spec:
+      containers:
+      - name: my-app
+        image: my-registry/my-app:${GIT_COMMIT}
+        ports:
+        - containerPort: 5000
+```
+
