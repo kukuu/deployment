@@ -177,3 +177,8 @@ iii. Configure Notification Channels:
 a. Set up channels for notifications (e.g., email, Slack, PagerDuty).
 
 b. Example: Send an alert to Slack if the error rate exceeds a threshold.
+
+
+**_Output_**
+
+![image](https://github.com/kukuu/deployment/blob/main/grafana-dashboard.png)
