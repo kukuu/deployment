@@ -159,6 +159,6 @@ i. Deploy Grafana in Kubernetes:
 helm install grafana grafana/grafana
 ```
 
-ii. Access Grafana and add Prometheus as a data source.
+ii. Access Grafana and add Prometheus as a data source: https://github.com/kukuu/deployment/blob/main/grafana-dashboard.md
 
 iii. Create dashboards to visualize metrics like request rates, error rates, and system performance.
