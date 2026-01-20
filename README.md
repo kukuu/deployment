@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3 
-      - run: npm ci
+      - run: npm ci 
       - run: npm run build
       - run: npm run test
       - run: npm run lint
