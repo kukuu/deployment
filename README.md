@@ -1,6 +1,6 @@
 # Deployment
 
-**CI/CD Workflow (.github/workflows)**
+**CI/CD Workflow (.github)**
 ```
 # frontend-ci.yml
 name: Frontend CI
